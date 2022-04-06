@@ -63,7 +63,7 @@ namespace os
                         }
                     case 2:
                         {
-                            string path = "A://test/";
+                            string path = "D://test/";
                             Console.WriteLine("Выберите функцию: ");
                             Console.WriteLine("Выйти в главное меню - 0");
                             Console.WriteLine("Создать файл - 1");
@@ -167,7 +167,7 @@ namespace os
                                     }
                                 case 1:
                                     {
-                                        using (FileStream fs = new FileStream("A://test/user.json", FileMode.OpenOrCreate))
+                                        using (FileStream fs = new FileStream("D://test/user.json", FileMode.OpenOrCreate))
                                         {
                                             Console.WriteLine("Введите имя: ");
                                             string name = Console.ReadLine();
@@ -180,10 +180,10 @@ namespace os
                                     }
                                 case 2:
                                     {
-                                        FileInfo file1Info = new FileInfo("A://test/user.json");
+                                        FileInfo file1Info = new FileInfo("D://test/user.json");
                                         if (file1Info.Exists)
                                         {
-                                            using (FileStream fs = new FileStream("A://test/user.json", FileMode.OpenOrCreate))
+                                            using (FileStream fs = new FileStream("D://test/user.json", FileMode.OpenOrCreate))
                                             {
                                                 Person restoredPerson = await JsonSerializer.DeserializeAsync<Person>(fs);
                                                 Console.WriteLine($"Name: {restoredPerson.Name}  Age: {restoredPerson.Age}");
@@ -197,10 +197,10 @@ namespace os
                                     }
                                 case 3:
                                     {
-                                        FileInfo file1Info = new FileInfo("A://test/user.json");
+                                        FileInfo file1Info = new FileInfo("D://test/user.json");
                                         if (file1Info.Exists)
                                         {
-                                            FileInfo fileInf = new FileInfo("A://test/user.json");
+                                            FileInfo fileInf = new FileInfo("D://test/user.json");
                                             if (fileInf.Exists)
                                             {
                                                 fileInf.Delete();
@@ -232,7 +232,7 @@ namespace os
                                     }
                                 case 1:
                                     {
-                                        using (FileStream fstream = new FileStream("A://test/car.xml", FileMode.Create))
+                                        using (FileStream fstream = new FileStream("D://test/car.xml", FileMode.Create))
                                         {
                                         }
                                         break;
@@ -249,7 +249,7 @@ namespace os
                                         auto.color = Console.ReadLine();
                                         Console.Write("Год выпуска: ");
                                         auto.productionYear = Console.ReadLine();
-                                        StreamWriter writer = new StreamWriter("A://test/car.xml");
+                                        StreamWriter writer = new StreamWriter("D://test/car.xml");
                                         XmlSerializer serializer = new XmlSerializer(typeof(Car));
                                         serializer.Serialize(writer, auto);
                                         writer.Close();
@@ -257,8 +257,8 @@ namespace os
                                     }
                                 case 3:
                                     {
-                                        Car auto = new Car(); 
-                                        Stream streamout = new FileStream("A://test/car.xml", FileMode.Open, FileAccess.Read);
+                                        Car auto = new Car();
+                                        Stream streamout = new FileStream("D://test/car.xml", FileMode.Open, FileAccess.Read);
                                         XmlSerializer xml = new XmlSerializer(typeof(Car));
                                         auto = (Car)xml.Deserialize(streamout);
                                         streamout.Close();
@@ -268,10 +268,10 @@ namespace os
                                     }
                                 case 4:
                                     {
-                                        FileInfo file1Info = new FileInfo("A://test/car.xml");
+                                        FileInfo file1Info = new FileInfo("D://test/car.xml");
                                         if (file1Info.Exists)
                                         {
-                                            FileInfo fileInf = new FileInfo("A://test/car.xml");
+                                            FileInfo fileInf = new FileInfo("D://test/car.xml");
                                             if (fileInf.Exists)
                                             {
                                                 fileInf.Delete();
@@ -288,10 +288,10 @@ namespace os
                         }
                     case 5:
                         {
-                            string zipfolder = "A://test/0fold/";
-                            string sourceFolder = "A://test/";
-                            string archive = "A://test/test.zip";
-                            string targetFolder = "A://test/unziped";
+                            string zipfolder = "D://test/0fold/";
+                            string sourceFolder = "D://test/";
+                            string archive = "D://test/test.zip";
+                            string targetFolder = "D://test/unziped";
                             Console.WriteLine("Выберите функцию: ");
                             Console.WriteLine("Выйти в главное меню - 0");
                             Console.WriteLine("Создать архив в формате zip - 1");
@@ -326,13 +326,13 @@ namespace os
                                         }
                                         Console.WriteLine("Введите название файла, который хотите заархивировать: ");
                                         string zipfile = Console.ReadLine();
-                                        string zip1file = "A://test/" + zipfile;
+                                        string zip1file = "D://test/" + zipfile;
                                         FileInfo fileInf2 = new FileInfo(zip1file);
                                         if (fileInf2.Exists)
                                         {
                                             fileInf2.MoveTo(zipfolder + zipfile);
                                         }
-                                        ZipFile.CreateFromDirectory(zipfolder, "A://test/test1.zip");
+                                        ZipFile.CreateFromDirectory(zipfolder, "D://test/test1.zip");
 
 
                                         break;
@@ -347,7 +347,7 @@ namespace os
                                             {
                                                 dirInfo.Create();
                                             }
-                                            ZipFile.ExtractToDirectory("A://test/test1.zip", targetFolder);
+                                            ZipFile.ExtractToDirectory("D://test/test1.zip", targetFolder);
 
                                             FileInfo fInfo = new FileInfo(targetFolder + "/note.txt");
                                             if (fInfo.Exists)
@@ -379,7 +379,7 @@ namespace os
                                     {
                                         Console.WriteLine("Введите название архива, который хотите удалить: ");
                                         string delzip = Console.ReadLine();
-                                        delzip = "A://test/" + delzip;
+                                        delzip = "D://test/" + delzip;
                                         FileInfo fileInf = new FileInfo(delzip);
                                         if (fileInf.Exists)
                                         {
